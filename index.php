@@ -9,8 +9,8 @@ use Allegro\REST\Api;
 //
 //KONFIGURACJA
 //
-const clientID = 'aa4f62e20d624adf8578a5ac56d859fd';
-const clientSECRET = 'go6UceoFqy2oI6uwFxpJjDN6QvSMBQKvXaOkn6aPJmVrP0mojUNTRoAbyIs0zTsu';
+const clientID = 'tutaj wpisujemy clientID';
+const clientSECRET = 'tutaj wpisujemy clientSECRET';
 const tokenFILE = 'token.json';
 const offerLIMIT = '200'; //Maximum is 120x100 = 12000 offers
 //
@@ -137,7 +137,7 @@ else {
                 'offset' => $queryOffset,
                 'searchMode' => $searchMode,
                 'sellingMode.format' => $offerType,
-                'phrase' => $searchPhrase . $excludeWords,
+                'phrase' => $searchPhrase . $excludePhrase,
                 'category.id' => $categoryId,
                 'price.from' => $priceFrom,
                 'price.to' => $priceTo
