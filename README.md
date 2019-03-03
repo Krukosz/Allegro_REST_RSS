@@ -1,16 +1,16 @@
 # Allegro_REST_RSS
 Skrypt do tworzenia kanałów RSS. Wykorzystuje REST API Allegro (WebAPI ma zostać wygaszone - dotychczasowe rozwiązania z którymi się spotkałem opierają się na starym rozwiązaniu).
 
-Stworzone na podstawie [php-allegro-rest-api] (https://github.com/Wiatrogon/php-allegro-rest-api) użytkownika @Wiatrogon oraz wykorzystuje rozwiązania (i sporą część instrukcji :)) projektu [alleRSS] (https://github.com/iskuzik/alleRSS) od @iskuzik
+Stworzone na podstawie [php-allegro-rest-api]https://github.com/Wiatrogon/php-allegro-rest-api) użytkownika @@Wiatrogon oraz wykorzystuje rozwiązania (i sporą część instrukcji :)) projektu [alleRSS](https://github.com/iskuzik/alleRSS) od @@iskuzik
 
 Skrypt używa publicznej metody **GET offers/listing**, tak więc nadaje się to do wykorzystania w generowaniu kanału RSS - część zasobów np. wymaga autoryzacji użytkownika. Jest to duża zmiana w stosunku do WebAPI.
 W tym przypadku do działania jest potrzebny **clientID** oraz **clientSecret** dla **DeviceFlow** (o tym poniżej)
 
-Mimo wszystko rozwiązanie nie jest tak dobre jak oryginalny generator RSS od allegro (wygaszony w marcu 2018) - więcej o tym w [uwagach] (#Uwagi)
+Mimo wszystko rozwiązanie nie jest tak dobre jak oryginalny generator RSS od allegro (wygaszony w marcu 2018) - więcej o tym w [uwagach](#Uwagi)
 
 # Instalacja
 1. Pobieramy skrypt 
-1. Dodajemy do skryptu nasze dane do REST API - (o tym jak wygenerować clientID oraz clientSecret można przeczytać [tutaj] (https://developer.allegro.pl/auth/#DeviceFlow)
+1. Dodajemy do skryptu nasze dane do REST API - (o tym jak wygenerować clientID oraz clientSecret można przeczytać [tutaj](https://developer.allegro.pl/auth/#DeviceFlow)
 1. Zmodyfikowany skrypt wysyłamy na własny serwer, bądź na nasz lokalny serwer z obsługą PHP
 1. Tworzymy link do kanału RSS (więcej o tym niżej)
 1. Sprawdzamy poprawność naszego linku w przeglądarce
@@ -58,12 +58,12 @@ closed=1
 ### Cena od: `priceFrom`
 W parametrze `priceFrom` możemy określić minimalną cenę, od której powinny zaczynać się oferty. Możemy w nim podawać liczby całkowite, np. `1000`, jak i zmiennoprzecinkowe, np. `999.99`. Przykładowo:
 ```
-price_from=150.50
+priceFrom=150.50
 ```
 ### Cena do: `priceTo`
 W parametrze `priceTo` możemy określić maksymalną cenę w jakiej wyświetlane będą oferty. Możemy w nim podawać liczby całkowite, np. `1000`, jak i zmiennoprzecinkowe, np. `999.99`. Przykładowo:
 ```
-price_to=300
+priceTo=300
 ```
 ### Typ ofert: `offerType`
 W parametrze `offerType` możemy sprecyzować typy ofert, które będą dostarczane dla nas w kanale. Domyślnie wyświetlane są wszystkie typy ofert (ogłoszenia, licytacje i oferty kup teraz). Dodając ten parametr, możemy wyświetlić jedynie aukcje (`auction`) lub oferty kup teraz (`buyNow`). Przykładowo:
@@ -77,7 +77,7 @@ offerType=2
 ```
 #### Ogłoszenie
 ```
-offerType=2
+offerType=3
 ```
 ### Stan: `condition`
 Work in progress...
@@ -103,7 +103,7 @@ http://www.naszadomena.pl/alleRSS.php?string=szukany+przedmiot&exclude=pomin+slo
 # Uwagi
 - Nie jestem programistą PHP, dlatego skrypt może nie być napisany idealnie, niektóre założenia mogą być dyskusyjne dla profesjonalistów. Każdy zawsze może zrobić forka ;)
 - Podobnie jak w WebAPI skrypt najpierw pobiera promowane oferty (w tytule pojawia się znacznik `(PROMOWANE)`). 
-- Niestety, ale skrypt na ten moment nie jest tak dopracowany jak oryginalny [alleRSS] (https://github.com/iskuzik/alleRSS). Tutaj brakuje sporej części opcji filtrowania. Jest to do odtworzenia, ale potrzebuję trochę czasu. Jakiekolwiek problemy/sugestie proszę zgłaszać przez Issues.
+- Niestety, ale skrypt na ten moment nie jest tak dopracowany jak oryginalny [alleRSS](https://github.com/iskuzik/alleRSS). Tutaj brakuje sporej części opcji filtrowania. Jest to do odtworzenia, ale potrzebuję trochę czasu. Jakiekolwiek problemy/sugestie proszę zgłaszać przez Issues.
 - Zarówno stare WebAPI jak i REST API nie zwracają informacji o czasie rozpoczęcia aukcji - czasami czytnik RSS zwraca zdublowane wpisy. Mam na to rozwiązanie, które będzie wymagało używania bazy danych MySQL.
 - Pamiętajmy o limicie przydzielonym dla każdego klucza REST API: 9000 zapytań na minutę oraz limicie dla IP: 120 zapytań na sekundę.
 
