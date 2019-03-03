@@ -12,7 +12,7 @@ use Allegro\REST\Api;
 const clientID = 'tutaj wpisujemy clientID';
 const clientSECRET = 'tutaj wpisujemy clientSECRET';
 const tokenFILE = 'token.json';
-const offerLIMIT = '200'; //Maximum is 120x100 = 12000 offers
+const offerLIMIT = '100'; //Maximum is 120x100 = 12000 offers
 //
 //KONFIGURACJA: KONIEC
 //
