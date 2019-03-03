@@ -9,8 +9,8 @@ use Allegro\REST\Api;
 //
 //KONFIGURACJA
 //
-const clientID = 'tutaj wpisujemy clientID';
-const clientSECRET = 'tutaj wpisujemy clientSECRET';
+const clientID = 'tutaj wpisz clientID';
+const clientSECRET = 'tutaj wpisz clientSecret';
 const tokenFILE = 'token.json';
 const offerLIMIT = '100'; //Maximum is 120x100 = 12000 offers
 //
@@ -19,7 +19,7 @@ const offerLIMIT = '100'; //Maximum is 120x100 = 12000 offers
 //POBIERANIE ATRYBUTÓW SZUKANIA
 //
 $searchPhrase = null;
-$excludeWords = null;
+$excludePhrase = null;
 $searchMode = null;
 $categoryId = null;
 $priceFrom = null;
@@ -27,14 +27,16 @@ $priceTo = null;
 $offerType = null;
 
 if (isset($_GET['string']) && strlen($_GET['string']) > 1) {
-    $searchPhrase = htmlspecialchars($_GET['string']);
+    //$searchPhrase = htmlspecialchars($_GET['string']);
+    $searchPhrase = $_GET['string'];
 }
 if (isset($_GET['exclude'])) {
-    $str = htmlspecialchars($_GET['exclude']);
-    $excludeWords = str_word_count($str, 1, 'ąĄćĆęĘłŁńŃóÓśŚżŻźŹ');
+    $excludePhrase = "";
+    $rawString = $_GET['exclude'];
+    $excludeArray = explode('+', $rawString);
     
-    foreach ($excludeWords as $word) {
-        $excludePhrase .= "+-" . $word;
+    foreach ($excludeArray as $excludeWord) {
+        $excludePhrase .= '+-' . $excludeWord;
     }
 }
 if (isset($_GET['description']) && $_GET['description'] == 1) {
