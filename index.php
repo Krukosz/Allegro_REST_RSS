@@ -28,12 +28,13 @@ $offerType = null;
 
 if (isset($_GET['string']) && strlen($_GET['string']) > 1) {
     //$searchPhrase = htmlspecialchars($_GET['string']);
-    $searchPhrase = $_GET['string'];
+    $rawString = $_GET['string'];
+    $searchPhrase = str_replace(' ', '+', $rawString);
 }
 if (isset($_GET['exclude'])) {
     $excludePhrase = "";
     $rawString = $_GET['exclude'];
-    $excludeArray = explode('+', $rawString);
+    $excludeArray = explode(' ', $rawString);
     
     foreach ($excludeArray as $excludeWord) {
         $excludePhrase .= '+-' . $excludeWord;
