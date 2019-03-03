@@ -1,10 +1,12 @@
 # Allegro_REST_RSS
 Skrypt do tworzenia kanałów RSS. Wykorzystuje REST API Allegro (WebAPI ma zostać wygaszone - dotychczasowe rozwiązania z którymi się spotkałem opierają się na starym rozwiązaniu).
-Stworzone na podstawie [implementacji REST API] (https://github.com/Wiatrogon/php-allegro-rest-api) użytkownika Wiatrogon oraz wykorzystuje rozwiązania (i sporą część instrukcji :)) projektu [alleRSS] (https://github.com/iskuzik/alleRSS)
+
+Stworzone na podstawie [php-allegro-rest-api] (https://github.com/Wiatrogon/php-allegro-rest-api) użytkownika @Wiatrogon oraz wykorzystuje rozwiązania (i sporą część instrukcji :)) projektu [alleRSS] (https://github.com/iskuzik/alleRSS) od @iskuzik
+
 Skrypt używa publicznej metody **GET offers/listing**, tak więc nadaje się to do wykorzystania w generowaniu kanału RSS - część zasobów np. wymaga autoryzacji użytkownika. Jest to duża zmiana w stosunku do WebAPI.
 W tym przypadku do działania jest potrzebny **clientID** oraz **clientSecret** dla **DeviceFlow** (o tym poniżej)
 
-Mimo wszystko rozwiązanie nie jest tak dobre jak oryginalny generator RSS od allegro (wygaszony w marcu 2018) - więcej o tym w [uwagach] (#uwagi)
+Mimo wszystko rozwiązanie nie jest tak dobre jak oryginalny generator RSS od allegro (wygaszony w marcu 2018) - więcej o tym w [uwagach] (#Uwagi)
 
 # Instalacja
 1. Pobieramy skrypt 
