@@ -25,6 +25,7 @@ $categoryId = null;
 $priceFrom = null;
 $priceTo = null;
 $offerType = null;
+$sellerId = null;
 
 if (isset($_GET['string']) && strlen($_GET['string']) > 1) {
     //$searchPhrase = htmlspecialchars($_GET['string']);
@@ -52,6 +53,9 @@ else {
 
 if (isset($_GET['categoryId'])) {
     $categoryId = $_GET['categoryId'];
+}
+if (isset($_GET['sellerId'])) {
+    $sellerId = $_GET['sellerId'];
 }
 
 if ((isset($_GET['priceFrom']) && is_numeric($_GET['priceFrom'])) || (isset($_GET['priceTo']) && is_numeric($_GET['priceTo']))) {
@@ -142,6 +146,7 @@ else {
                 'sellingMode.format' => $offerType,
                 'phrase' => $searchPhrase . $excludePhrase,
                 'category.id' => $categoryId,
+                'seller.id' => $sellerId,
                 'price.from' => $priceFrom,
                 'price.to' => $priceTo
             );
@@ -243,6 +248,17 @@ function getOfferData($offerObject, $offerPromoted = 0, $printLineSeparator = "<
         if (count($offerObject[$i]->images) > 0) {
             $rss .=  "<a href=\"https://allegro.pl/i" . $offerObject[$i]->id . ".html\"><img src=\"" . $offerObject[$i]->images[0]->url . "\" style='float: left; max-height: 100px; max-width: 100px;'></a>\n";
         }
+        if (isset($offerObject[$i]->seller)) {
+            $sellerInfo = "Sprzedawca: <a href='https://allegro.pl/uzytkownik/" .  $offerObject[$i]->seller->id . "/oceny'>" . $offerObject[$i]->seller->id . "</a>";
+            $sellerInfo .= $offerObject[$i]->seller->company == TRUE ? ", Firma" : "";
+            $sellerInfo .= $offerObject[$i]->seller->company == TRUE ? ", SuperSprzedawca" : "";
+        }
+        else {
+            $sellerInfo = "";
+        }
+        
+        $rss .= $sellerInfo . $printLineSeparator;
+        
         $offerSellingMode = $offerObject[$i]->sellingMode;
         if ($offerSellingMode->format == "BUY_NOW") {
             
