@@ -51,6 +51,12 @@ Parametr `description` określa, czy oprócz szukania naszej frazy w tytułach, 
 ```
 description=1
 ```
+### Wyszukiwanie ofert konkretnego sprzedawcy: `sellerId`
+Parametr ten określa id sprzedawcy w którego przedmiotach chcemy wyszukiwać oferty. Wartość parametru można pobrać z linka karty ocen konkretnego sprzedawcy.
+Będzie miał on formę https://allegro.pl/uzytkownik/ID_SPRZEDAWCY/oceny
+```
+description=1
+```
 ### Wyszukiwanie w zakończonych ofertach: `closed`
 ```
 closed=1
