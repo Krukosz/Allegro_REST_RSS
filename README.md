@@ -49,7 +49,7 @@ exclude=ram+cpu+gpu
 ### Wyszukiwanie w opisach i parametrach ofert: `description`
 Parametr `description` określa, czy oprócz szukania naszej frazy w tytułach, chcemy jej też szukać w opisach i parametrach ofert. Jeśli chcemy rozszerzyć wyszukiwanie, to dodajemy parametr:
 ```
-description=1
+sellerId=22609257
 ```
 ### Wyszukiwanie ofert konkretnego sprzedawcy: `sellerId`
 Parametr ten określa id sprzedawcy w którego przedmiotach chcemy wyszukiwać oferty. Wartość parametru można pobrać z linka karty ocen konkretnego sprzedawcy.
