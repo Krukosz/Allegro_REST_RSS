@@ -10,7 +10,7 @@ Mimo wszystko rozwiązanie nie jest tak dobre jak oryginalny generator RSS od al
 
 # Instalacja
 1. Pobieramy skrypt 
-1. Dodajemy do skryptu nasze dane do REST API - (o tym jak wygenerować clientID oraz clientSecret można przeczytać [tutaj](https://developer.allegro.pl/auth/#DeviceFlow)
+1. Dodajemy do pliku `index.php` nasze dane do REST API - (o tym jak wygenerować clientID oraz clientSecret można przeczytać [tutaj](https://developer.allegro.pl/auth/#DeviceFlow)
 1. Zmodyfikowany skrypt wysyłamy na własny serwer, bądź na nasz lokalny serwer z obsługą PHP
 1. Tworzymy link do kanału RSS (więcej o tym niżej)
 1. Sprawdzamy poprawność naszego linku w przeglądarce
