@@ -26,6 +26,7 @@ $priceFrom = null;
 $priceTo = null;
 $offerType = null;
 $sellerId = null;
+$offerCondition = null;
 
 if (isset($_GET['string']) && strlen($_GET['string']) > 1) {
     //$searchPhrase = htmlspecialchars($_GET['string']);
@@ -86,6 +87,9 @@ if (isset($_GET['offerType']) && is_numeric($_GET['offerType'])) {
     }
 }
 
+if (isset($_GET['offerCondition'])) {
+    $offerCondition = $_GET['offerCondition'];
+}
 //
 //
 
@@ -148,7 +152,8 @@ else {
                 'category.id' => $categoryId,
                 'seller.id' => $sellerId,
                 'price.from' => $priceFrom,
-                'price.to' => $priceTo
+                'price.to' => $priceTo,
+                'parameter.11323' => $offerCondition
             );
             
             $responseJSON = $api->offers->listing->get($data);
@@ -248,6 +253,7 @@ function getOfferData($offerObject, $offerPromoted = 0, $printLineSeparator = "<
         if (count($offerObject[$i]->images) > 0) {
             $rss .=  "<a href=\"https://allegro.pl/i" . $offerObject[$i]->id . ".html\"><img src=\"" . $offerObject[$i]->images[0]->url . "\" style='float: left; max-height: 100px; max-width: 100px;'></a>\n";
         }
+        $rss .= "<a href=\"https://allegro.pl/i" . $offerObject[$i]->id . ".html\">Link do aukcji</a>" . $printLineSeparator;
         if (isset($offerObject[$i]->seller)) {
             $sellerInfo = "Sprzedawca: <a href='https://allegro.pl/uzytkownik/" .  $offerObject[$i]->seller->id . "/oceny'>" . $offerObject[$i]->seller->id . "</a>";
             $sellerInfo .= $offerObject[$i]->seller->company == TRUE ? ", Firma" : "";
