@@ -85,8 +85,16 @@ offerType=2
 ```
 offerType=3
 ```
-### Stan: `condition`
-Work in progress...
+### Stan: `offerCondition`
+W parametrze `offerCondition` możemy ustawić, że interesują nas tylko konkretny stan przedmiotu. Podobnie jak w innych parametrach - do linku z kanałem dodajemy nazwę parametru z jedną z wartości poniżej.
+#### Nowy
+```
+offerCondition=1
+```
+#### Używany
+```
+offerCondition=2
+```
 
 ### Parametry lokalizacyjne
 Work in progress...
