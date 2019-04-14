@@ -85,8 +85,15 @@ offerType=2
 ```
 offerType=3
 ```
-### Stan: `condition`
-Work in progress...
+### Stan: `offerCondition`
+#### Nowy
+```
+offerCondition=1
+```
+#### Używany
+```
+offerCondition=2
+```
 
 ### Parametry lokalizacyjne
 Work in progress...
