@@ -88,6 +88,7 @@ if (isset($_GET['offerType']) && is_numeric($_GET['offerType'])) {
 }
 
 if (isset($_GET['offerCondition'])) {
+    
     $offerCondition = $_GET['offerCondition'];
 }
 //
