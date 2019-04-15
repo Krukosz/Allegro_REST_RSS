@@ -2,6 +2,7 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 //require_once dirname(__DIR__) . '/vendor/autoload.php';
+require_once 'image.php';
 require_once  'src/Resource.php';
 require_once  'src/Api.php';
 
@@ -252,7 +253,7 @@ function getOfferData($offerObject, $offerPromoted = 0, $printLineSeparator = "<
         $rss .=  "<link>https://allegro.pl/i" . $offerObject[$i]->id . ".html</link>\n";
         $rss .=  "<description><![CDATA[\n";
         if (count($offerObject[$i]->images) > 0) {
-            $rss .=  "<a href=\"https://allegro.pl/i" . $offerObject[$i]->id . ".html\"><img src=\"" . $offerObject[$i]->images[0]->url . "\" style='float: left; max-height: 100px; max-width: 100px;'></a>\n";
+            $rss .=  "<a href=\"https://allegro.pl/i" . $offerObject[$i]->id . ".html\"><img src=image.php?url=" . $offerObject[$i]->images[0]->url . " style='float: left; max-height: 128px; max-width: 128px;'></a>\n";
         }
         $rss .= "<a href=\"https://allegro.pl/i" . $offerObject[$i]->id . ".html\">Link do aukcji</a>" . $printLineSeparator;
         if (isset($offerObject[$i]->seller)) {
@@ -303,7 +304,6 @@ function getOfferData($offerObject, $offerPromoted = 0, $printLineSeparator = "<
     }
     return $rss;
 }
-
 function datetimeRFC($dateREST){
     //Converts Y-m-d\Tg:i:s.u\Z format to RFC 2822 format
     $dateArray = explode('.', $dateREST);
@@ -312,5 +312,4 @@ function datetimeRFC($dateREST){
     $dateTime = date_format($dateTimeObject, 'r');
     return $dateTime;
 }
-
 ?>
