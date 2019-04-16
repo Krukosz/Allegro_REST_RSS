@@ -7,11 +7,12 @@ require_once  'src/Resource.php';
 require_once  'src/Api.php';
 
 use Allegro\REST\Api;
+header("Content-type: text/xml");
 //
 //KONFIGURACJA
 //
-const clientID = 'tutaj wpisz clientID';
-const clientSECRET = 'tutaj wpisz clientSecret';
+//const clientID = 'tutaj wpisz clientID';
+//const clientSECRET = 'tutaj wpisz clientSecret';
 const tokenFILE = 'token.json';
 const offerLIMIT = '100'; //Maximum is 120x100 = 12000 offers
 //
@@ -243,7 +244,8 @@ function getErrorData($responseError, $lineSeparator = '') {
  * @return string
  */
 function getOfferData($offerObject, $offerPromoted = 0, $printLineSeparator = "<br>\n") {
-    
+    $domain = $_SERVER['SERVER_NAME'];
+    $path = substr($_SERVER['REQUEST_URI'], 0, strrpos($_SERVER['REQUEST_URI'], "/"));
     $rss = "";
     for ($i = 0; $i < count($offerObject); $i++) {
         $rss .= "<item>\n";
@@ -253,7 +255,7 @@ function getOfferData($offerObject, $offerPromoted = 0, $printLineSeparator = "<
         $rss .=  "<link>https://allegro.pl/i" . $offerObject[$i]->id . ".html</link>\n";
         $rss .=  "<description><![CDATA[\n";
         if (count($offerObject[$i]->images) > 0) {
-            $rss .=  "<a href=\"https://allegro.pl/i" . $offerObject[$i]->id . ".html\"><img src=image.php?url=" . $offerObject[$i]->images[0]->url . " style='float: left; max-height: 128px; max-width: 128px;'></a>\n";
+            $rss .=  "<a href=\"https://allegro.pl/i" . $offerObject[$i]->id . ".html\"><img src=\"http://".$domain . $path ."/image.php?url=" . $offerObject[$i]->images[0]->url . "\" style='float: left; max-height: 128px; max-width: 128px;'></a>\n";
         }
         $rss .= "<a href=\"https://allegro.pl/i" . $offerObject[$i]->id . ".html\">Link do aukcji</a>" . $printLineSeparator;
         if (isset($offerObject[$i]->seller)) {

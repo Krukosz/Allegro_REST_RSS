@@ -1,5 +1,5 @@
 <?php
-   //header('Content-Type: image/jpeg');
+   header('Content-Type: image/jpeg');
    require('src/SimpleImage.php');
    function imageResize($imageAddress, $imageSize) {
        $image = new SimpleImage();
