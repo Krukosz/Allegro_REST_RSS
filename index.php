@@ -11,8 +11,8 @@ header("Content-type: text/xml");
 //
 //KONFIGURACJA
 //
-//const clientID = 'tutaj wpisz clientID';
-//const clientSECRET = 'tutaj wpisz clientSecret';
+const clientID = 'tutaj wpisz clientID';
+const clientSECRET = 'tutaj wpisz clientSecret';
 const tokenFILE = 'token.json';
 const offerLIMIT = '100'; //Maximum is 120x100 = 12000 offers
 //
