@@ -247,17 +247,24 @@ function getOfferData($offerObject, $offerPromoted = 0, $printLineSeparator = "<
     $domain = $_SERVER['SERVER_NAME'];
     $path = substr($_SERVER['REQUEST_URI'], 0, strrpos($_SERVER['REQUEST_URI'], "/"));
     $rss = "";
+    $offerUrl = "";
     for ($i = 0; $i < count($offerObject); $i++) {
         $rss .= "<item>\n";
         $rss .=  "<title>";
         $rss .= $offerPromoted == 1 ? "(PROMOWANE) " : "";
         $rss .= htmlspecialchars($offerObject[$i]->name) . "</title>\n";
-        $rss .=  "<link>https://allegro.pl/i" . $offerObject[$i]->id . ".html</link>\n";
+        if (isset($offerObject[$i]->vendor)) {
+            $offerUrl = $offerObject[$i]->vendor->url;
+        }
+        else {
+            $offerUrl = "https://allegro.pl/i" . $offerObject[$i]->id . ".html";
+        }
+        $rss .=  "<link>" . $offerUrl . "</link>\n";
         $rss .=  "<description><![CDATA[\n";
         if (count($offerObject[$i]->images) > 0) {
-            $rss .=  "<a href=\"https://allegro.pl/i" . $offerObject[$i]->id . ".html\"><img src=\"http://".$domain . $path ."/image.php?url=" . $offerObject[$i]->images[0]->url . "\" style='float: left; max-height: 128px; max-width: 128px;'></a>\n";
+            $rss .=  "<a href=\"" . $offerUrl . "\"><img src=\"http://".$domain . $path ."/image.php?url=" . $offerObject[$i]->images[0]->url . "\" style='float: left; max-height: 128px; max-width: 128px;'></a>\n";
         }
-        $rss .= "<a href=\"https://allegro.pl/i" . $offerObject[$i]->id . ".html\">Link do aukcji</a>" . $printLineSeparator;
+        $rss .= "<a href=\"" . $offerUrl . "\">Link do aukcji</a>" . $printLineSeparator;
         if (isset($offerObject[$i]->seller)) {
             $sellerInfo = "Sprzedawca: <a href='https://allegro.pl/uzytkownik/" .  $offerObject[$i]->seller->id . "/oceny'>" . $offerObject[$i]->seller->id . "</a>";
             $sellerInfo .= $offerObject[$i]->seller->company == TRUE ? ", Firma" : "";
