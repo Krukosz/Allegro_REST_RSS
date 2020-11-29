@@ -90,8 +90,14 @@ if (isset($_GET['offerType']) && is_numeric($_GET['offerType'])) {
 }
 
 if (isset($_GET['offerCondition'])) {
-    
-    $offerCondition = $_GET['offerCondition'];
+
+    //1  - nowy - 11323_1
+    //2  - uzywany - 11323_2
+    //4  - po zwrocie - 11323_238066
+    //8  - powystawowy - 11323_238058
+    //16 - uszkodzony - 11323_238062
+    $val = $_GET['offerCondition'];
+    $offerCondition = array($val&1?'11323_1':'',$val&2?'11323_2':'',$val&4?'11323_238066':'',$val&8?'11323_238058':'',$val&16?'11323_238062':'');
 }
 //
 //

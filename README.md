@@ -86,7 +86,7 @@ offerType=2
 offerType=3
 ```
 ### Stan: `offerCondition`
-W parametrze `offerCondition` możemy ustawić, że interesują nas tylko konkretny stan przedmiotu. Podobnie jak w innych parametrach - do linku z kanałem dodajemy nazwę parametru z jedną z wartości poniżej.
+W parametrze `offerCondition` możemy ustawić, że interesuje nas tylko konkretny stan przedmiotu. Podobnie jak w innych parametrach - do linku z kanałem dodajemy nazwę parametru z jedną z wartości poniżej, lub sumą tych wartości.
 #### Nowy
 ```
 offerCondition=1
@@ -94,6 +94,22 @@ offerCondition=1
 #### Używany
 ```
 offerCondition=2
+```
+#### Po zwrocie
+```
+offerCondition=4
+```
+#### Powystawowy
+```
+offerCondition=8
+```
+#### Uszkodzony
+```
+offerCondition=16
+```
+#### Przykład szukania przedmiotu Używanego (2) oraz Uszkodzonego (16)
+```
+offerCondition=18
 ```
 
 ### Parametry lokalizacyjne
