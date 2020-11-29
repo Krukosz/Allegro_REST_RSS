@@ -1,6 +1,17 @@
 <?php
 namespace Allegro\REST;
 
+function custom_build_query($query_data) {
+    $query = array();
+    foreach ($query_data as $name => $value) {
+        $value = (array) $value;
+        array_walk_recursive($value, function($value) use (&$query, $name) {
+            $query[] = urlencode($name) . '=' . urlencode($value);
+        });
+    }
+    return implode("&", $query);
+}
+
 class Resource
 {
 
@@ -57,7 +68,7 @@ class Resource
 
         if ($data !== null) {
             $uri .= '?';
-            $uri .= http_build_query($data);
+            $uri .= custom_build_query($data);
         }
 
         return $this->sendApiRequest($uri, 'GET');
