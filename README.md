@@ -1,3 +1,6 @@
+# Skrypt nie działa - brak dostępu do API allegro
+
+
 # Allegro_REST_RSS
 Skrypt do tworzenia kanałów RSS. Wykorzystuje REST API Allegro (WebAPI ma zostać wygaszone - dotychczasowe rozwiązania z którymi się spotkałem opierają się na starym rozwiązaniu).
 
